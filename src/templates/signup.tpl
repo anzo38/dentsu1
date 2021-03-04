@@ -23,6 +23,10 @@
 .error{
 	color:red;
 }
+
+#e_195{
+  display:none;
+}
 </style>
 
 
@@ -35,11 +39,11 @@
 	<p>名前:{$name}</p>
     <p>メールアドレス:{$e_mail}</p>
  	<p>お聞きしたいこと:
-   {foreach $question_assign as $key => $question_array}
+   {foreach $question as $key => $question_array}
    {$question_array}
    {/foreach}
    </p>
-    <p>カテゴリー:{$category_assign}</p>
+    <p>カテゴリー:{$category}</p>
     <p>電話可能日:{$date}</p>
     <p>電話可能時間帯:{$time_start}-{$time_end}</p>
     <p>コース:{$course}</p>
@@ -91,15 +95,23 @@
 
         <input type="hidden" name="name" value="{$name}">
         <input type="hidden" name="e_mail" value="{$e_mail}">
-         {foreach $question_assign as $key => $question_v}
+         {foreach $question as $key => $question_v}
 					 <td><label><input type="hidden" name="question[]" value="{$question_v}">{$question_v}<label></td>
-					 {/foreach}
-        <input type="hidden" name="category" value="">
+				 {/foreach}
+
+         {foreach $category as $key => $category_v}
+         <input type="hidden" name="category" value="{$category_v}">
+         {/foreach}
         <input type="hidden" name="date" value="{$date}">
         <input type="hidden" name="time_start" value="{$time_start}">
         <input type="hidden" name="time_end" value="{$time_end}">
 
-        <input type="hidden" name="course" value="{$course}">
+        <select name="course" id="e_195">
+         {foreach $course as $key => $course_v}
+         <option type="hidden">{$course_v}</option>
+         {/foreach}
+        <select>
+        {* <input type="hidden" name="course" value="{$course}"> *}
         <input type="hidden" name="comment" value="{$comment}">
 
     <input type="submit" value="修正する">

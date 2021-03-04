@@ -22,200 +22,198 @@
 
 <style>
 .error{
-	color:red;
+    color:red;
 }
 </style>
 </head>
-
 <body class="other">
-	<div id="contentAll">
-
-	<div id="headLogo">
-		<p><a href="https://www.dentsu.co.jp/"><img src="https://contact.dentsu.jp/img?id=290&t=9lwd&v=2ccd6373" width="150" height="32" alt="dentsu" /></a></p>
-	<!--/headLogo--></div>
-	<div id="contentHeadWrapper">
-		<div id="contentHead">
-			
-			<ul id="globalMenu"><!--
-				--><li id="globalMenu01"><a href="https://www.dentsu.co.jp/vision/">企業情報</a></li><!--
-				--><li id="globalMenu02"><a href="https://www.dentsu.co.jp/business/">事業紹介</a></li><!--
-				--><li id="globalMenu03"><a href="https://www.dentsu.co.jp/global/">グローバルネットワーク</a></li><!--
-				--><li id="globalMenu04"><a href="https://www.dentsu.co.jp/news/">ニュース</a></li><!--
-				--><li id="globalMenu05"><a href="https://www.dentsu.co.jp/ir/">IR情報</a></li><!--
-				--><li id="globalMenu06"><a href="https://www.dentsu.co.jp/csr/">CSR</a></li><!--
-				--><li id="globalMenu07"><a href="https://www.dentsu.co.jp/recruit/">採用情報</a></li><!--
-			--></ul>
-		<!--/contentHead--></div>
-	<!--/contentHeadWrapper--></div>
-		
-		<div id="breadCrumb">
-			<ul><!--
-				--><li><a href="https://www.dentsu.co.jp/">HOME</a></li><!--
-				--><li><a href="https://www.dentsu.co.jp/mail/">お問い合わせ</a></li><!--
-				--><li>クリエイティブに関するお問い合わせ</li>
+    <div id="contentAll">
+    <div id="headLogo">
+        <p><a href="https://www.dentsu.co.jp/"><img src="https://contact.dentsu.jp/img?id=290&t=9lwd&v=2ccd6373" width="150" height="32" alt="dentsu" /></a></p>
+    <!--/headLogo--></div>
+    <div id="contentHeadWrapper">
+        <div id="contentHead">
+            
+            <ul id="globalMenu"><!--
+                --><li id="globalMenu01"><a href="https://www.dentsu.co.jp/vision/">企業情報</a></li><!--
+                --><li id="globalMenu02"><a href="https://www.dentsu.co.jp/business/">事業紹介</a></li><!--
+                --><li id="globalMenu03"><a href="https://www.dentsu.co.jp/global/">グローバルネットワーク</a></li><!--
+                --><li id="globalMenu04"><a href="https://www.dentsu.co.jp/news/">ニュース</a></li><!--
+                --><li id="globalMenu05"><a href="https://www.dentsu.co.jp/ir/">IR情報</a></li><!--
+                --><li id="globalMenu06"><a href="https://www.dentsu.co.jp/csr/">CSR</a></li><!--
+                --><li id="globalMenu07"><a href="https://www.dentsu.co.jp/recruit/">採用情報</a></li><!--
+            --></ul>
+        <!--/contentHead--></div>
+    <!--/contentHeadWrapper--></div>
+        
+        <div id="breadCrumb">
+            <ul><!--
+                --><li><a href="https://www.dentsu.co.jp/">HOME</a></li><!--
+                --><li><a href="https://www.dentsu.co.jp/mail/">お問い合わせ</a></li><!--
+                --><li>クリエイティブに関するお問い合わせ</li>
         <!--
-				  
+                  
         --></ul>
-		<!--/breadCrumb--></div>
-		
-		<div id="contentBodyWrapper">
-			<div id="contentBody">
-			
-				<h1>Contact</h1>
-			 
-				<div id="contentBodyMain" class="wideContent">
-				<h2>クリエイティブに関するお問い合わせ</h2>
-
-
-				<p class="BodyText margB10">お問い合わせをいただきまして、ありがとうございます。<br />
+        <!--/breadCrumb--></div>
+        
+        <div id="contentBodyWrapper">
+            <div id="contentBody">
+            
+                <h1>Contact</h1>
+             
+                <div id="contentBodyMain" class="wideContent">
+                <h2>クリエイティブに関するお問い合わせ</h2>
+                <p class="BodyText margB10">お問い合わせをいただきまして、ありがとうございます。<br />
                 ご返答させていただくにあたり、できる限り早くご返答をさせていただくつもりですが、特定の広告主や広告作品に関するお問い合わせは、お答えできない場合があることをご了承ください。<br />
                 また、ご相談内容や諸条件によりましてはお返事に日数がかかる場合もございます。あわせてご了承ください。</p>
-
-				<ul class="List">
-					<li>内容は可能な限り具体的にご記入をお願いいたします。</li>
-					<li><span class="required">＊</span>印の項目は必ずご記入をお願いいたします。</li>
-				</ul>
-
-				<form action="contact.php?gui=2" method="post">
-
-				 <table class="formTable">
-					<tr>
-					 <th>名前<span class="required">＊</span>
-					 <span class="error">{$name_error}</span></th>
-					 <td><input type="text" name="name" id="e_163" value="{$name}" size="30" maxlength="50" /></td>
-					</tr>
-
-					<tr>
-					 <th>メールアドレス<span class="required">＊</span>
-					  <span class="error">{$e_mail_error}</span></th>
-					 <td><input type="email" name="e_mail" id="e_164" value="{$e_mail}" size="30" maxlength="50" /></td>
-					</tr>
+                <ul class="List">
+                    <li>内容は可能な限り具体的にご記入をお願いいたします。</li>
+                    <li><span class="required">＊</span>印の項目は必ずご記入をお願いいたします。</li>
+                </ul>
+                <form action="contact.php?gui=2" method="post">
+                 <table class="formTable">
+                    <tr>
+                     <th>名前<span class="required">＊</span>
+                     <span class="error">{$name_error}</span></th>
+                     <td><input type="text" name="name" id="e_163" value="{$name}" size="30" maxlength="50" /></td>
+                    </tr>
+                    <tr>
+                     <th>メールアドレス<span class="required">＊</span>
+                      <span class="error">{$e_mail_error}</span></th>
+                     <td><input type="email" name="e_mail" id="e_164" value="{$e_mail}" size="30" maxlength="50" /></td>
+                    </tr>
     
-					<tr>
-					 <th>お聞きしたい内容<span class="required">＊</span>
-					 <span class="error">{$question_error}</span></th>
-					 {foreach $question as $key => $question_v}
-					 
-					 <td><label><input type="checkbox" name="question[]" value="{$question_v}"{$v}>{$question_v}<label></td>
-			
-					 {/foreach}
-					</tr>
-					
+                    <tr>
+                     <th>お聞きしたい内容<span class="required">＊</span>
+                     <span class="error">{$question_error}</span></th>
+                             
+
+        
+                     {foreach $question_config_data as $key => $question_v}
+                        {if in_array($key,$question)}
+                        <td><label><input type="checkbox" name="question[]" value="{$key}" checked="checked">{$question_v}<label></td>
+                       
+                        
+                        {else}
+                        <td><label><input type="checkbox" name="question[]" value="{$key}">{$question_v}<label></td>
+                   
+                        {/if}
+                        
+                     {/foreach}
+                    </tr>
+                    
                    <tr>
-					 <th>カテゴリ<span class="required">＊</span>
-					 <span class="error">{$category_error}</span></th>
-					 
-					 {foreach $category as $key  => $category_v}
-					 <th><label><input type="radio" name="category" value={$category_v}>{$category_v}</label></th>
-					 {* {if $reassgin_c eq "問い合わせ"}
-					 <th><label><input type="radio" name="category" value="{$categories}" checked="checked">{$categories} </label></th>
-					 {/if} *}
-					 {/foreach}
-					
-					</tr>
-
-					<tr>
-						<th>電話可能日<span class="required">＊</span>
-						<span class="error">{$date_error}</span></th>
-						<td><input type="date" name="date" value="{$date}"></td>
-					</tr>
-
-					<tr>
-					 <th>電話可能時間帯<span class="required">＊</span>
-					 <span class="error">{$time_error}</span>
-					 <span class="error">{$differ_time_error}</span></th>
-					 <td>
+                     <th>カテゴリ<span class="required">＊</span>
+                     <span class="error">{$category_error}</span></th>
+                     
+                     {foreach $category_config_data as $key  => $category_v}
+                      {if $key == $category}
+                      <th><label><input type="radio" name="category" value="{$key}" checked="checked">{$category_v}</label></th>
+                      {else}
+											<th><label><input type="radio" name="category" value="{$key}">{$category_v}</label></th>
+											 {/if}
+                     {/foreach}
+                    
+                    </tr>
+                    <tr>
+                        <th>電話可能日<span class="required">＊</span>
+                        <span class="error">{$date_error}</span></th>
+                        <td><input type="date" name="date" value="{$date}"></td>
+                    </tr>
+                    <tr>
+                     <th>電話可能時間帯<span class="required">＊</span>
+                     <span class="error">{$time_error}</span>
+                     <span class="error">{$differ_time_error}</span></th>
+                     <td>
                      <input type="time" name="time_start"  min="10:00" max="19:00" value={$time_start} >
                      <span>〜</span>
                      <input type="time" name="time_end" min="10:00" max="19:00" value={$time_end}>
                      </td> 
-					</tr>
-
-					<tr>
-					 <th>コース<span class="required">＊</span>
-					 <span class="error">{$course_error}</span></th>
-					 <td>
-					 <select name="course" id="e_195">
-					 <option value="" selected="selected">---お選び下さい---</option>
-					 <option value="course1"{$course1}>スタンダード</option>
-				     <option value="course2"{$course2}>プレミアム</option>
-					 <option value="course3"{$course3}>プラチナ</option>
-					 <option value="course4"{$course4}>ゴールド</option>
-					 </select>
-					 </td>
-					</tr>
-
-					
-
-	               <tr>
-					 <th class="vAlignM">お問い合わせ内容<span class="required">＊</span>
-					 <span class="error">{$comment_error}</span></th>
-				     <td>
-					 <textarea name="comment" rows="10" cols="50" id="e_193" >{$comment}</textarea>
-					 </td>
-					</tr>
-					
-
-	
-					<tr>
-						<th></th>
-						<td>
-								<ul class="Button_event margB00"><!--
-									--><li><input type="submit" name="__send" id="__send" value="確認" /></li><!--
-									--><li><input type="reset" value="リセット" /></li><!--
-								--></ul>
-						</td>
-					</tr>
-					</table>
-					<input type="hidden" name="__search_e_165" id="__search_e_165" value="" /><input type="hidden" name="__name" value="" /><input type="hidden" name="f" id="f" value="13" />
+                    </tr>
+                    <tr>
+                     <th>コース<span class="required">＊</span>
+                     <span class="error">{$course_error}</span></th>
+                     <td>
+                     <select name="course" id="e_195">
+                       <option  selected="selected">---お選び下さい---</option>
+                      {foreach $course_config_data as $key  => $course_v}
+                      {if $course_v == $course}
+                     <option selected>{$course_v}</option>
+                     {else}
+                   
+                      <option >{$course_v}</option>
+                      {/if}
+                     {/foreach}
+                     </select>
+                     </td>
+                    </tr>
+                    
+                   <tr>
+                     <th class="vAlignM">お問い合わせ内容<span class="required">＊</span>
+                     <span class="error">{$comment_error}</span></th>
+                     <td>
+                     <textarea name="comment" rows="10" cols="50" id="e_193" >{$comment}</textarea>
+                     </td>
+                    </tr>
+                    
+    
+                    <tr>
+                        <th></th>
+                        <td>
+                                <ul class="Button_event margB00"><!--
+                                    --><li><input type="submit" name="__send" id="__send" value="確認" /></li><!--
+                                    --><li><input type="reset" value="リセット" /></li><!--
+                                --></ul>
+                        </td>
+                    </tr>
+                    </table>
+                    <input type="hidden" name="__search_e_165" id="__search_e_165" value="" /><input type="hidden" name="__name" value="" /><input type="hidden" name="f" id="f" value="13" />
 </form>
-				<!--/contentBodyMain--></div>
-				
-			<!--/contentBody--></div>
-		<!--/contentBodyWrapper--></div>
-		<div id="contentFootWrapper">
-	<div id="contentFoot"><!--
-		--><!--
-		--><ul class="utilityLink"><!--
-					--><li><a href="https://www.dentsu.co.jp/terms/privacy_policy.html">個人情報の取扱いについて</a></li><!--
-					--><li><a href="https://www.dentsu.co.jp/terms/">このサイトのご利用にあたって</a></li><!--
-					--><li><a href="https://www.dentsu.co.jp/terms/rss.html">RSSについて</a></li><!--
-					--><li><a href="https://www.dentsu.co.jp/lookup/sitemap.html">サイトマップ</a></li><!--
-					--><li><a href="https://www.dentsu.co.jp/mail/">お問い合わせ</a></li><!--
-		--></ul><!--
-	--></div>
-	<p id="footLogo"><a href="https://www.dentsu.co.jp/"><img src="https://contact.dentsu.jp/img?id=292&t=9lwd&v=98138e88" width="96" height="21" alt="dentsu" /></a></p>
-	<p id="copyRight">&copy; DENTSU INC. ALL RIGHTS RESERVED.</p>
-	<!--/contentFootWrapper--></div>
-	<div id="fixPageTop">
-		<p><a href="#"><img src="https://contact.dentsu.jp/img?id=293&t=9lwd&v=aaad2206" alt="ページTOPへ" /></a></p>
-	<!--/fixPageTop--></div>
-
+                <!--/contentBodyMain--></div>
+                
+            <!--/contentBody--></div>
+        <!--/contentBodyWrapper--></div>
+        <div id="contentFootWrapper">
+    <div id="contentFoot"><!--
+        --><!--
+        --><ul class="utilityLink"><!--
+                    --><li><a href="https://www.dentsu.co.jp/terms/privacy_policy.html">個人情報の取扱いについて</a></li><!--
+                    --><li><a href="https://www.dentsu.co.jp/terms/">このサイトのご利用にあたって</a></li><!--
+                    --><li><a href="https://www.dentsu.co.jp/terms/rss.html">RSSについて</a></li><!--
+                    --><li><a href="https://www.dentsu.co.jp/lookup/sitemap.html">サイトマップ</a></li><!--
+                    --><li><a href="https://www.dentsu.co.jp/mail/">お問い合わせ</a></li><!--
+        --></ul><!--
+    --></div>
+    <p id="footLogo"><a href="https://www.dentsu.co.jp/"><img src="https://contact.dentsu.jp/img?id=292&t=9lwd&v=98138e88" width="96" height="21" alt="dentsu" /></a></p>
+    <p id="copyRight">&copy; DENTSU INC. ALL RIGHTS RESERVED.</p>
+    <!--/contentFootWrapper--></div>
+    <div id="fixPageTop">
+        <p><a href="#"><img src="https://contact.dentsu.jp/img?id=293&t=9lwd&v=aaad2206" alt="ページTOPへ" /></a></p>
+    <!--/fixPageTop--></div>
 <!-- SiteCatalyst code version: H.21.
 Copyright 1996-2010 Adobe, Inc. All Rights Reserved
 More info available at http://www.omniture.com -->
 <script type="text/javascript" src="https://contact.dentsu.jp/img?id=116&t=9lwd&v=0e6b34bc"></script>
 <!--/DO NOT REMOVE/-->
 <!-- End SiteCatalyst code version: H.21. -->
-
 <!--/contentAll--></div>
-	
+    
 {* <style>
 .gdpr #contentFootWrapper{
-	padding-bottom: 200px;
+    padding-bottom: 200px;
 }
 [data-gdpr="wrap"]{
-	background-color: #000 !important;
-	padding: 40px 5% 30px !important;
+    background-color: #000 !important;
+    padding: 40px 5% 30px !important;
 }
 [data-gdpr="wrap"] div p{
-	top: -25px !important;
-	font-size: 14px !important;
-	line-height: 1.5 !important;
+    top: -25px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
 }
 [data-gdpr="wrap"] div img{
-	width: 20px !important;
-	height: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
 }
 </style> *}
 {* <div data-gdpr="wrap" style="background: #000; bottom:0; left:0; position: fixed; z-index: 500; padding: 60px 5%; box-sizing: border-box; width: 100%;" >
@@ -297,6 +295,5 @@ More info available at http://www.omniture.com -->
     }
   })();
 </script> *}
-
 </body>
 </html>

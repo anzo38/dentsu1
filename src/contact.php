@@ -19,6 +19,9 @@ class Contact {
   public  $course="";
   public  $pass="";
 
+  //CONFから取得したデータを整形した配列一式
+  private $config_data;
+
  
 
   function __construct(){
@@ -70,41 +73,21 @@ class Contact {
 
 
   }
-
+ 
+   
 
   function gui1(){
-
+    var_dump($this->course);
     $this->assign_value();
-    var_dump($this->question);
-    // $conf_data=$this->smarty->getConfigVars();
-    
-   
-     if(in_array("商品について",$this->question)){
-      $this->smarty->assign('v', 'checked="checked"');
-   
-      // foreach($conf_data as $k =>$v){
-      //   if (preg_match("/question/",$k)){
-         
-      //    $question_conf[]= $v;
-      //     $this->smarty->assign("question",  $question_conf);
-       
-      //   }
   
-      }
-   
-
-    $this->conf_data();
+    $this->load_config_data();
     $this->smarty->display('input.tpl');
  
   }
 
   function gui2(){
 print_r($this->question);
-// $question1_set = [];
-// foreach($this->question as $k => $v){
-//   $hobby_set[] = $v;
-//   echo $hobby_set;
-// }
+
     if(isset($this->to_signup)){
 
       $this->assign_value();
@@ -112,7 +95,7 @@ print_r($this->question);
     }
  
     elseif($this->validate()){
-      $this->conf_data();
+      $this->load_config_data();
       $this->assign_value();
      
      
@@ -191,36 +174,38 @@ if ($this->pass !== $this->pass2){
  function assign_value(){
     $this->smarty->assign('name', $this->name);
     $this->smarty->assign('e_mail', $this->e_mail);
-    $this->smarty->assign('question_assign', $this->question);
-    $this->smarty->assign('category_assign', $this->category);
+    $this->smarty->assign('question', $this->question);
 
-    // foreach($this->category as $k => $v){
-    //   if()
-    //   $this->smarty->assign($v , "checked='checked'");
-    // }
+    $this->smarty->assign('category', $this->category);
+   
+  
     $this->smarty->assign('date', $this->date);
     $this->smarty->assign('time_start', $this->time_start);
     $this->smarty->assign('time_end', $this->time_end);
+    $this->smarty->assign('course', $this->course);
+ 
+
     
+    // input.tplから戻った値をassign
     
-  //  }
-  
+    // $this->smarty->assign("course_selected", $this->category);
+
   
     // コースの値を保持
-    if($this->course == "course1"){
-      $this->smarty->assign("course1", "selected='selected'");
-      $this->smarty->assign("course", "スタンダード");
+    // if($this->course == "course1"){
+    //   $this->smarty->assign("course1", "selected='selected'");
+    //   $this->smarty->assign("course", "スタンダード");
 
-    }elseif($this->course == "course2"){
-      $this->smarty->assign("course2", "selected='selected'");
-      $this->smarty->assign("course", "プレミアム");
-    }elseif($this->course == "course3"){
-      $this->smarty->assign("course3", "selected='selected'");
-      $this->smarty->assign("course3", "プラチナ");
-    }elseif($this->course == "course4"){
-      $this->smarty->assign("course4", "selected='selected'");
-      $this->smarty->assign("course4", "ゴールド");
-    }
+    // }elseif($this->course == "course2"){
+    //   $this->smarty->assign("course2", "selected='selected'");
+    //   $this->smarty->assign("course", "プレミアム");
+    // }elseif($this->course == "course3"){
+    //   $this->smarty->assign("course3", "selected='selected'");
+    //   $this->smarty->assign("course3", "プラチナ");
+    // }elseif($this->course == "course4"){
+    //   $this->smarty->assign("course4", "selected='selected'");
+    //   $this->smarty->assign("course4", "ゴールド");
+    // }
     // confirm時の値をassigin
     $course_confirm = $this->course;
     $this->smarty->assign("course_confirm", $course_confirm );
@@ -231,19 +216,10 @@ if ($this->pass !== $this->pass2){
 
 
 
- }
+ 
 
 
- function checked(){
 
-  var_dump($this->question);
-foreach($this->question as $k => $v){
-if($v=="商品について"){
-  $this->smarty->assign('question_checked', 'checked="checked"');
-}elseif(!$v=="商品について"){
-echo"uu";
-}
-}
 //  $conf_data=$this->smarty->getConfigVars();
 //  foreach($conf_data as $k =>$v){
 //   if (preg_match("/question/",$k)){
@@ -317,57 +293,51 @@ if (empty($this->comment)){
 
 
 // confファイルのデータによって項目が増える
-  function  conf_data(){
+  function  load_config_data(){
     // $conf_data="";
     $conf_data=$this->smarty->getConfigVars();
 
-   
+    
     foreach($conf_data as $k =>$v){
       if (preg_match("/question/",$k)){
-       
-       $question_conf[]= $v;
-        $this->smarty->assign("question",  $question_conf);
-     
-      }
-
-      if (preg_match("/category/",$k)){
-       
-        $category_conf[]= $v;
-        $this->smarty->assign("category",  $category_conf);
-
+        $this->config_data["question"][$k]=$v;
+      }elseif(preg_match("/category/",$k)){
+        $this->config_data["category"][$k]=$v;
+      }elseif(preg_match("/course/",$k)){
+        $this->config_data["course"][$k]=$v;
+      }elseif(preg_match("/db/",$k)){
+        $this->config_data["db"][$k]=$v;
       }
     }
+    // print_r($this->config_data["question"]);
 
-   
-   
+    $this->smarty->assign("question_config_data",$this->config_data["question"]);
+    $this->smarty->assign("category_config_data",$this->config_data["category"]);
+    $this->smarty->assign("course_config_data",$this->config_data["course"]);
+
   }
-   
-  // var_dump("question". $i) ;
-  //   $question1=$this->smarty->getConfigVars()['question'.$i];
- 
-  //   $this->smarty->assign("question1",$question1);
-  //   echo  $question1;
- 
-  // $r=array($question[$i]);
-  // $question="question3";
-  // $number=range( 1, 10 );
-  // $question= "question".$number;
-// var_dump( $question);
-
-// if(isset($this->smarty->getConfigVars()[$question])){
-//   $this->smarty->assign("question",$question);
- 
-// }
-
-// print_r( $question);
-// $arr = array(1000, 1001, 1002);
-// $smarty->assign('myArray', $arr);
-
- 
-
- 
-
 }
+    
+
+  
+    
+   
+
+
+ 
+ 
+
+
+
+
+  
+   
+
+
+
+ 
+
+
 
 
 

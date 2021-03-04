@@ -1,0 +1,68 @@
+version: '3.5'
+
+services:
+  # ---------------
+  # inquiry2.local
+  # ---------------
+  inquiry2.local:
+    container_name: inquiry2.local
+    build:
+      # contextが場所
+      context: ./nginx
+      #  dockerfile/ ファイル名
+      dockerfile: Dockerfile
+      # ↓systemctlというコマンドを打つためのおまじない
+    tty: true
+    stdin_open: true
+    privileged: true
+    command: /sbin/init
+    volumes:
+      # nginxの設定ファイル
+      # 「.conf」は（ファイル）「conf.d」は（フォルダ）
+      - ./nginx/data/conf.d:/etc/nginx/conf.d
+      - ./nginx/entrypoint.sh:/entrypoint.sh
+      # documetn root(表示したいファイル)
+      - ./src:/data/inquiry2.local/src
+      - ./nginx/logs:/data/logs/nginx
+    ports:
+    - 8080:80
+    # depends_on:
+    #   - reverse-proxy
+    #   - webapp1_db
+    environment:
+      TZ: "Asia/Tokyo"
+    # networks:
+    #   app_net:
+    #       ipv4_address: 172.1.0.2
+
+  # MySQL
+  mysql.inquiry2.local:
+    image: mysql:5.7
+    container_name: mysql.inquiry2.local
+    environment:
+      MYSQL_ROOT_PASSWORD: pass1234
+      MYSQL_DATABASE: inquiry
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --secure-file-priv=""
+    volumes:
+    - ./docker/mysql/data:/var/lib/mysql
+    - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./docker/mysql/sql:/docker-entrypoint-initdb.d
+
+    ports:
+    - 3306:3306
+  #  expose:
+  #   - 3306
+  #   networks:
+  #     app_net:
+  #         ipv4_address: 172.1.0.3
+# networks:
+#   app_net:
+#       name: app_net
+#       ipam:
+#           config:
+            # 172.0.0.1〜172.0.0.254
+            #サブネットとはどこからどこまでのIPの範囲を同じネットワークとするか
+              # - subnet: 172.1.0.0/24

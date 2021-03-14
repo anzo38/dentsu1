@@ -1,20 +1,20 @@
-<?php /* Smarty version 3.1.36, created on 2021-02-24 15:03:35
+<?php /* Smarty version 3.1.36, created on 2021-03-14 09:34:29
          compiled from '/data/inquiry2.local/src/configs/const.conf' */ ?>
 <?php
-/* Smarty version 3.1.36, created on 2021-02-24 15:03:35
+/* Smarty version 3.1.36, created on 2021-03-14 09:34:29
   from '/data/inquiry2.local/src/configs/const.conf' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_60366ac7aee105_58976139',
+  'unifunc' => 'content_604dd8a51d9bb1_91784693',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fa3fe5b5ff91af9b45b41d3f77dd55d57b881c21' => 
     array (
       0 => '/data/inquiry2.local/src/configs/const.conf',
-      1 => 1614179012,
+      1 => 1615714464,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60366ac7aee105_58976139 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604dd8a51d9bb1_91784693 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->smarty->ext->configLoad->_loadConfigVars($_smarty_tpl, array (
   'sections' => 
   array (
@@ -41,11 +41,14 @@ $_smarty_tpl->smarty->ext->configLoad->_loadConfigVars($_smarty_tpl, array (
     'course2' => 'プレミアム',
     'course3' => 'プラチナ',
     'course4' => 'ゴールド',
-    'DB_HOST' => 'localhost',
-    'DB_NAME' => 'contact',
-    'DB_USER' => 'root',
-    'DB_PASS' => 'pass1234',
-    'DB_PORT' => 3306,
+    'db_host' => 'localhost',
+    'db_name' => 'inquiry',
+    'db_user' => 'root',
+    'db_pass' => 'pass1234',
+    'db_port' => 3306,
+    'login_id' => 'anzo.sa8@gmail.com',
+    'login_pass' => 111,
+    'salt' => 'husndk',
   ),
 ));
 }

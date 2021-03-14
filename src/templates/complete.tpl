@@ -11,12 +11,26 @@
 </head>
 <body>
 <div class="container">
-  <h2>送信結果</h2>
+ 
+{$name}<br>
+{$e_mail}<br>
+{foreach $question as $key => $question_array}
+ {$question_config_data[$question_array]}
+{/foreach}<br>
+{$category_config_data[$category]}<br>
+{$date}<br>
+{$time_start}〜{$time_end}<br>
+{$course}<br>
+{$comment}<br>
+{$login_id}
+{$pass}
 
-  
+
+ <br>
   {$successful}
-  {$decline}
+  {$decline} 
   
+   
 </div>
 </body>
 </html>

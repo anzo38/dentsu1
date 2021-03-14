@@ -42,8 +42,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass1234
       MYSQL_DATABASE: inquiry
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
+      MYSQL_USER: root
+      MYSQL_PASSWORD: pass123
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --secure-file-priv=""
     volumes:

@@ -31,7 +31,7 @@ require_once('smarty/Smarty.class.php');
          
         //  $this->session_data->config_hash();
        
-            
+    
            
             $this->search();
         
@@ -51,14 +51,14 @@ require_once('smarty/Smarty.class.php');
     function q($count){
 
         $query="select * from contact";
-          if($count==0){
+          if($count=0){
             $query.="";
-        }elseif($count==1){
+        }elseif($count=1){
             $query.= "where" ;
-        }elseif($count==2){
+        }elseif($count=2){
             $query.= "\n" ."and" ;
         }
-            
+        return($this->q(0));  
     }
 
     function search(){
@@ -100,11 +100,19 @@ require_once('smarty/Smarty.class.php');
             // }elseif($count=2){
             //     $query.= "\n" ."and" ;
             // }
-          
             if(empty($search)){
- 
-               $r= $this->q("0");
-            }
+                $this->q(0);
+               return $query;
+
+       }
+       if(!empty($search_id )&&$count=1){
+        $query.= $q_id;
+    }elseif(!empty($search_id)&&$count=2){
+        
+            $query.= $q_id;
+   
+        } 
+    
         //     if($this->q(1)){
                
         //     $r=$this->createState($search_id,$query,$q_id);
@@ -126,7 +134,7 @@ require_once('smarty/Smarty.class.php');
             //     $count=2;
             // }
 
-              print_r($r);
+              var_dump($this->q(0));
           }
           
       

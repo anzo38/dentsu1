@@ -20,7 +20,7 @@ class Contact {
   public  $pass="";
 
   //CONFから取得したデータを整形した配列一式
-  private $config_data;
+  public $config_data;
 
  
 
@@ -42,6 +42,7 @@ class Contact {
     $this->pass2 = htmlspecialchars($_POST['pass2']);
     $this->to_signup =($_POST['to_signup']);
     $this->to_signup =($_POST['to_confirm']);
+    $this->to_complete =($_POST['to_complete']);
     if (!is_array($this->question)){
       $this->question = [];
     }
@@ -86,11 +87,12 @@ class Contact {
   }
 
   function gui2(){
-print_r($this->question);
-
+   
+    $this->load_config_data();
     if(isset($this->to_signup)){
-
+    
       $this->assign_value();
+     
       $this->smarty->display('signup.tpl');
     }
  
@@ -113,7 +115,8 @@ print_r($this->question);
  }
 
  function gui3(){
-
+ 
+  $this->load_config_data();
     if($this->login_validate()){
     $this->assign_value();
  
@@ -130,9 +133,116 @@ print_r($this->question);
 
 
  function gui4(){
+   
+  $this->db_conect();
+ 
+
+  
+  $this->load_config_data();
   $this->assign_value();
+
+  // $mailto = "yamazaki@uns-j.co.jp";
+  // $header = "From: yamazaki@uns-j.co.jp";
+  // $title = "test";
+  // $message = "test";
+  // mb_language("Japanese"); 
+  // mb_internal_encoding("UTF-8");
+  // if(mb_send_mail("yamazaki@uns-j.co.jp",$title,$message,$header,'-f' . 'yamazaki@uns-j.co.jp')){
+  //   $this->smarty->assign('successful', '送信完了！お問い合わせいただきありがとうございます');
+  // }else{
+  //   $this->smarty->assign('decline', '送信できませんでした');
+  // }
+
+
+
+
   $this->smarty->display('complete.tpl');  
  }
+
+
+ function  db_conect(){
+  // echo phpinfo();
+  // $conf_data="";
+  // $conf_data=$this->smarty->getConfigVars();
+
+      
+  //     foreach($conf_data as $k =>$v){
+  //       if(preg_match("/db/",$k)){
+  //         $this->config_data["db"][$k]=$v;
+  //     }
+  //   }
+  //  $db_name=$this->config_data["db"]["db_name"];
+  //  $db_host=$this->config_data["db"]["db_host"];
+
+  //  $dsn = "mysql:dbname=". $db_name.";host=". $db_host;
+  //  $user = $this->config_data["db"]["db_user"];
+  //  $password = $this->config_data["db"]["db_pass"];
+   
+  // try {
+  //     $dbh = new PDO($dsn, $user, $password);
+  //     echo "接続成功\n";
+  // } catch (PDOException $e) {
+  //     echo "接続失敗: " . $e->getMessage() . "\n";
+  //     exit();
+  // }
+
+  $dsn = 'mysql:dbname=inquiry;host=mysql.inquiry2.local';
+  $user = 'root';
+  $password = 'pass1234';
+  try {
+      $dbh = new PDO($dsn, $user, $password);
+      echo "接続成功\n";
+  } catch (PDOException $e) {
+      echo "接続失敗: " . $e->getMessage() . "\n";
+      // print_r($dbh -> errorInfo());
+      exit();
+  }
+  
+
+
+
+
+  // $db_contact= 'INSERT INTO dentsu_main (name, e_mail, category, data, time_start, time_end, course, comment, login_id, pass)  VALUE (:name, :e_mail, :category, :data, :time_start, :time_end, :course, :comment, :login_id, :pass)';
+  $db_contact= 'INSERT INTO dentsu_main (name)  VALUE (:name)';
+  // $date = $this->date;
+  date_default_timezone_set('Asia/Tokyo');
+  // $date = $this->time_start->format('H:i');
+  
+  $prepare = $dbh->prepare($db_contact);
+
+      $prepare->bindValue(':name', $this->name, PDO::PARAM_STR);
+      // $prepare->bindValue(':e_mail', $this->e_mail, PDO::PARAM_STR);
+      // foreach($this->question as $k => $v){
+      // $prepare->bindValue(':question_array', $v, PDO::PARAM_STR);
+      // }
+      // $prepare->bindValue(':category', $this->category, PDO::PARAM_STR);
+      // $prepare->bindValue(':date', $this->date, PDO::PARAM_STR);
+      // $prepare->bindValue(':time_start', $this->time_start, PDO::PARAM_STR);
+      // $prepare->bindValue(':time_end', $this->time_end, PDO::PARAM_STR);
+      // $prepare->bindValue(':course', $this->course, PDO::PARAM_STR);
+      // $prepare->bindValue(':comment', $this->comment, PDO::PARAM_STR);
+      // $prepare->bindValue(':login_id', $this->login_id, PDO::PARAM_STR);
+      $prepare ->execute();
+
+      // $last_id= $dbh->lastInsertId();
+      // $db_questions= 'INSERT INTO questions (contact_id ,question) VALUE (:table1_id, :question)' ;
+      // $prepare= $dbh->prepare($db_questions);
+      //   //↓table1の最後のauto_incrementの値を取得
+        
+      // $prepare->bindValue(':contact_id', $last_id, PDO::PARAM_INT);
+      // foreach($this->question as $k => $v){  
+      //   $prepare->bindValue(':question', $v, PDO::PARAM_STR);
+      //   $prepare ->execute();
+      // }
+}
+
+//  function save_db(){
+
+  
+
+
+//  }
+
 
 
  function login_validate(){
@@ -183,61 +293,9 @@ if ($this->pass !== $this->pass2){
     $this->smarty->assign('time_start', $this->time_start);
     $this->smarty->assign('time_end', $this->time_end);
     $this->smarty->assign('course', $this->course);
- 
-
-    
-    // input.tplから戻った値をassign
-    
-    // $this->smarty->assign("course_selected", $this->category);
-
-  
-    // コースの値を保持
-    // if($this->course == "course1"){
-    //   $this->smarty->assign("course1", "selected='selected'");
-    //   $this->smarty->assign("course", "スタンダード");
-
-    // }elseif($this->course == "course2"){
-    //   $this->smarty->assign("course2", "selected='selected'");
-    //   $this->smarty->assign("course", "プレミアム");
-    // }elseif($this->course == "course3"){
-    //   $this->smarty->assign("course3", "selected='selected'");
-    //   $this->smarty->assign("course3", "プラチナ");
-    // }elseif($this->course == "course4"){
-    //   $this->smarty->assign("course4", "selected='selected'");
-    //   $this->smarty->assign("course4", "ゴールド");
-    // }
-    // confirm時の値をassigin
-    $course_confirm = $this->course;
-    $this->smarty->assign("course_confirm", $course_confirm );
-
     $this->smarty->assign('comment', $this->comment);
     $this->smarty->assign('login_id', $this->login_id);
     $this->smarty->assign('pass', $this->pass);
-
-
-
- 
-
-
-
-//  $conf_data=$this->smarty->getConfigVars();
-//  foreach($conf_data as $k =>$v){
-//   if (preg_match("/question/",$k)){
-   
-//    return $question_confs=$question_conf[]= $v;
-    // $this->smarty->assign("question",  $question_conf);
- 
-  // }
- 
-// }
-
-
-// foreach($this->question as $k => $v){
-
-// if(iseet($this->question=="商品について")){
-//   $this->smarty->assign('question_checked', 'checked="checked"');
-// }
-// }
 
  }
 
@@ -249,39 +307,39 @@ if ($this->pass !== $this->pass2){
    $this->smarty->assign("name_error","名前を入力してください");
  }
 
-//  if (empty($this->e_mail)){
-//   $error = true;
-//   $this->smarty->assign("e_mail_error","メーアドレスを入力してください");
-// }
-// if (!is_array($this->question)){
-//   $error = true;
-//   $this->smarty->assign("question_error","1つ以上選択してください");
-// }
-// if (empty($this->category)){
-//   $error = true;
-//   $this->smarty->assign("category_error","選択してください");
-// }
+ if (empty($this->e_mail)){
+  $error = true;
+  $this->smarty->assign("e_mail_error","メーアドレスを入力してください");
+}
+if (!is_array($this->question)){
+  $error = true;
+  $this->smarty->assign("question_error","1つ以上選択してください");
+}
+if (empty($this->category)){
+  $error = true;
+  $this->smarty->assign("category_error","選択してください");
+}
 
 
-// if (empty($this->date)){
-//   $error = true;
-//   $this->smarty->assign("date_error","選択してください");
-// }
+if (empty($this->date)){
+  $error = true;
+  $this->smarty->assign("date_error","選択してください");
+}
 
-// if (empty($this->time_start && $this->time_end)){
-//   $error = true;
-//   $this->smarty->assign("time_error","時間を指定してください");
-// }elseif($this->time_start >= $this->time_end){
-//   $error = true;
-//   $this->smarty->assign("differ_time_error","正しい時間を指定してください");
-// }
+if (empty($this->time_start && $this->time_end)){
+  $error = true;
+  $this->smarty->assign("time_error","時間を指定してください");
+}elseif($this->time_start >= $this->time_end){
+  $error = true;
+  $this->smarty->assign("differ_time_error","正しい時間を指定してください");
+}
 
 
 
-// if (empty($this->course)){
-//   $error = true;
-//   $this->smarty->assign("course_error","コースを選択してください");
-// }
+if (empty($this->course)){
+  $error = true;
+  $this->smarty->assign("course_error","コースを選択してください");
+}
 
 if (empty($this->comment)){
   $error = true;
@@ -301,6 +359,7 @@ if (empty($this->comment)){
     foreach($conf_data as $k =>$v){
       if (preg_match("/question/",$k)){
         $this->config_data["question"][$k]=$v;
+        // $this->config_key["question"][$v]=$k;
       }elseif(preg_match("/category/",$k)){
         $this->config_data["category"][$k]=$v;
       }elseif(preg_match("/course/",$k)){
@@ -309,13 +368,24 @@ if (empty($this->comment)){
         $this->config_data["db"][$k]=$v;
       }
     }
-    // print_r($this->config_data["question"]);
 
     $this->smarty->assign("question_config_data",$this->config_data["question"]);
     $this->smarty->assign("category_config_data",$this->config_data["category"]);
     $this->smarty->assign("course_config_data",$this->config_data["course"]);
 
+
+    
+    echo$this->config_data["db"]["db_name"];
   }
+
+
+
+  
+
+
+
+
+
 }
     
 

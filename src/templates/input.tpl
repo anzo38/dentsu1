@@ -87,7 +87,6 @@
                      <th>お聞きしたい内容<span class="required">＊</span>
                      <span class="error">{$question_error}</span></th>
                              
-
         
                      {foreach $question_config_data as $key => $question_v}
                         {if in_array($key,$question)}
@@ -167,7 +166,9 @@
                         </td>
                     </tr>
                     </table>
+
                     <input type="hidden" name="__search_e_165" id="__search_e_165" value="" /><input type="hidden" name="__name" value="" /><input type="hidden" name="f" id="f" value="13" />
+					<input type="hidden"name="login_id"   value="{$login_id}">
 </form>
                 <!--/contentBodyMain--></div>
                 

@@ -1,68 +1,75 @@
 <?php
- require_once('smarty/Smarty.class.php');
+require_once('smarty/Smarty.class.php');
+// シングルトン
+class DbMabager {
 
-class Check {
-  protected $smarty=null;
-  protected $email="";
-  protected $loginpass="";
-  protected $public="";
+    private static $singleton;
+    private $db; //※
+    private  $dbh;
 
-  function __construct(){
-   
-    session_start();
-   
-      // $this->submit_btn = ($_POST['submit_btn']);
-      // $this->email =  htmlspecialchars($_POST['email']);
-      // $this->loginpass =  htmlspecialchars($_POST['loginpass']);
 
-       $this->smarty = new Smarty();
-       $this->smarty->template_dir = './templates/';
-       $this->smarty->compile_dir  = './templates_c/';
-   
+    private function __construct(){
+
+        $this->smarty = new Smarty();
+        $this->smarty->template_dir = './templates/';
+        $this->smarty->compile_dir  = './templates_c/';
      
-       $this->smarty->setConfigDir('./configs/');
-       $this->smarty->configLoad('const.conf');
-     
-    }
- 
-    function config_hash(){
-      // session_start();
-   
-     
-       $config_id= $this->smarty->getConfigVars()['login_id'];
-       $config_pass= $this->smarty->getConfigVars()['login_pass'];
-       $salt= $this->smarty->getConfigVars()['salt'];
-       //conf側で管理されているものの暗号化
-       $user_id = md5(md5($config_id) . md5($config_pass) . md5($salt) );
-      //  ※login.phpでSESSIONに値入れている
-      //  ここ↓で入れ直すと無条件でcong管理の値を格納している
-      //  $_SESSION['user'] = $user_id;
-       $user = $_SESSION['user'];
-          // print_r($_SESSION['user']);echo "\n";
-          // print_r($user);echo "\n";
-          // print_r($_SESSION['user']);echo "\n";
-
-
-          if($user != $user_id){
-
-            header('Location: /login.php');
-            exit;
-         
-          }  // }else{
-
-          //   $this->smarty->display('member.tpl');
-          // }
        
+        $this->smarty->setConfigDir('./configs/');
+        $this->smarty->configLoad('const.conf');
 
-     
-     
-      // $this->smarty->display('member.tpl');
     }
 
- 
+   private function execute(){
+        if(!isset($this->db))
+        $conf_data=$this->smarty->getConfigVars();
 
-   
- 
-  }
-  // $c = new Check();
-  // $c->config_hash();
+        // var_dump($conf_data);
+        foreach($conf_data as $k =>$v){
+            if(preg_match("/db/",$k)){
+            $this->config_data["db"][$k]=$v;
+        }
+        }
+        $db_name=$this->config_data["db"]["db_name"];
+        $db_host=$this->config_data["db"]["db_host"];
+
+        $dsn = "mysql:dbname=". $db_name.";host=". $db_host;
+        $user = $this->config_data["db"]["db_user"];
+        $password = $this->config_data["db"]["db_pass"];
+        
+        try {
+            $this->dbh = new PDO($dsn, $user, $password);
+            // echo "接続成功\n";
+        } catch (PDOException $e) {
+            echo "接続失敗: " . $e->getMessage() . "\n";
+            exit();
+        }
+    
+    }
+
+
+    public function exec($query){
+        $this->execute();
+        $stmt = $this->dbh->query($query);
+        $ary_db_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return  $ary_db_data;
+    }
+    
+    public static function getInstance() {
+       
+            if (!isset(self::$singleton)) {
+                self::$singleton = new DbMabager();    
+            }
+    
+            return self::$singleton;
+        }
+
+    }
+
+    // $result = DbMabager::getInstance()->exec($query);
+// function some_function() {
+//     $db = Database::getInstance();
+//     $db->get()->query('...');
+// }
+
+// some_function();

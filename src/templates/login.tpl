@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,11 +28,11 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in </p>
-{$login_error}
+      {$login_error}
       <form action="" method="post" class="needs-validation" novalidate>
        <label for="sign_in_name">sign in</label>
        <div class="input-group mb-3">
-          <input type="email" class="form-control" id="sign_in_name" placeholder="Email" name="e_mail" required>
+          <input type="email" class="form-control" id="sign_in_name" placeholder="Email" name="login_e_mail" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -134,7 +133,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 <title>ログインフォーム</title>
-
 </head>
 <style>
  .is-error{
@@ -162,20 +160,13 @@
 <h1>login.php</h1>
 <p>ログインE-mail</p>
 <p class="is-error">{$email_error}</p>
-
 <input type="text" placeholder="E-mail" name ="email" value="{$email}">
-
-
-
 <p>ログインパスワード</p>
 <p class="is-error">{$pass_error}</p>
-
 <input type="password" placeholder="Password" name="loginpass" value="{$email}">
-
 <input type="submit" name="submit_btn" value="ログインする">
 </form> *}
 {* <form method="post" action="login.php?login=1">
 <input type="hidden" name ="email" value="{$email}">
 <input type="hidden" name="loginpass" value="{$email}">
 </form> *}
-

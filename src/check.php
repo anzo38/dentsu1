@@ -1,14 +1,4 @@
 
-check.php
-受信トレイ
-
-sayako yamazaki
-3月12日(金) 19:27 (13 時間前)
-To 自分
-
-   
-メッセージを翻訳
-次の言語で無効にする: 英語
 <?php
  require_once('smarty/Smarty.class.php');
 

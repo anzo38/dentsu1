@@ -9,7 +9,7 @@
 <body>
 <h1>検索</h1>
 
-
+{$no_data}
 <form method="post" action="">
     <p>id:</p>
     <input type="text" name="search_id" value={$id}>
@@ -19,7 +19,7 @@
     <p>e_mail:</p>
     <input type="text" name="search_e_mail" value={$e_mail}>
     <p>login_id:</p>
-    <input type="text" name="search_login_id"value={$login_id}>
+    <input type="text" name="search_login_id" value={$login_id}>
     <p>date:</p>
     <input type="date" name="search_date" value="{$date}">
 
@@ -36,6 +36,7 @@
 
 </form>
 
+ 
 <table>
 
 

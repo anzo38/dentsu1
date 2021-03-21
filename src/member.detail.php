@@ -1,68 +1,68 @@
 <?php
- require_once('smarty/Smarty.class.php');
+// require_once('smarty/Smarty.class.php');
 
-class Check {
-  protected $smarty=null;
-  protected $email="";
-  protected $loginpass="";
-  protected $public="";
+require('./check.php');
+require('./database.php');
 
-  function __construct(){
-   
-    session_start();
-   
-      // $this->submit_btn = ($_POST['submit_btn']);
-      // $this->email =  htmlspecialchars($_POST['email']);
-      // $this->loginpass =  htmlspecialchars($_POST['loginpass']);
+/**
+ * TODOコメントを書きましょう。
+ */
+class Member_detail extends Check {
 
-       $this->smarty = new Smarty();
-       $this->smarty->template_dir = './templates/';
-       $this->smarty->compile_dir  = './templates_c/';
-   
-     
-       $this->smarty->setConfigDir('./configs/');
-       $this->smarty->configLoad('const.conf');
-     
+    /**
+     * TODOコメントを書きましょう
+     */
+    function __construct(){
+        parent::__construct();
+        //TODO ↓不要では？
+        $this->session_data = new Check();
+
+        
+    
+        $this->search_id=htmlspecialchars($_POST["search_id"]);
+        $this->search_name=htmlspecialchars($_POST["search_name"]);
+        $this->search_e_mail=htmlspecialchars($_POST["search_e_mail"]);
+        $this->search_login_id=htmlspecialchars($_POST["search_login_id"]);
+        $this->search_date=htmlspecialchars($_POST["search_date"]);
+        
     }
- 
-    function config_hash(){
-      // session_start();
-   
-     
-       $config_id= $this->smarty->getConfigVars()['login_id'];
-       $config_pass= $this->smarty->getConfigVars()['login_pass'];
-       $salt= $this->smarty->getConfigVars()['salt'];
-       //conf側で管理されているものの暗号化
-       $user_id = md5(md5($config_id) . md5($config_pass) . md5($salt) );
-      //  ※login.phpでSESSIONに値入れている
-      //  ここ↓で入れ直すと無条件でcong管理の値を格納している
-      //  $_SESSION['user'] = $user_id;
-       $user = $_SESSION['user'];
-          // print_r($_SESSION['user']);echo "\n";
-          // print_r($user);echo "\n";
-          // print_r($_SESSION['user']);echo "\n";
 
 
-          if($user != $user_id){
-
-            header('Location: /login.php');
-            exit;
-         
-          }  // }else{
-
-          //   $this->smarty->display('member.tpl');
-          // }
+    function execute(){
+        $this->results_from_db();
        
-
-     
-     
-      // $this->smarty->display('member.tpl');
+        
     }
+    
+    function results_from_db(){
+        // ini_set( 'display_errors', 1 );
+        //TODO　htmlspecialcharactersを入れましょう。
+        $result_id=$_POST["result_id"];
+    //  var_dump($search_id);
+    //TODO:プレースホルダを利用すること。DBは親クラスのものを利用。
+        $query="SELECT * FROM contact as c JOIN questions as q ON c.id = q.contact_id WHERE c.id=" . $result_id;
+        // print_r($query);exit;
+        $result = DbMabager::getInstance()->exec($query);
+        // $csv_data="氏名, 趣味, 好きな食べ物, お住まいの地域, パスワード\r\n";
+        if(empty($result)){
+            $this->smarty->assign('no_data',"情報がありません");
+        }
+        // print_r($result);exit;
+        $data="";
 
- 
+        $data=$result[0];
+       
+        $data["question"]=[];
+        foreach($result as $k => $v){
+            array_push($data["question"],$v["question"]);
+        }
+        $this->smarty->assign("data",$data);
 
-   
- 
-  }
-  // $c = new Check();
-  // $c->config_hash();
+        $this->smarty->display("member.detail.tpl");   
+    }
+}
+
+$member_detail = new Member_detail();
+    
+$member_detail->execute();
+?>

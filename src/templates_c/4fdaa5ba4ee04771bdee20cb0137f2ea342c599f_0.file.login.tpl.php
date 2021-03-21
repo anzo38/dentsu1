@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-14 09:37:08
+/* Smarty version 3.1.36, created on 2021-03-21 13:58:35
   from '/data/inquiry2.local/src/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_604dd9444d9793_69497160',
+  'unifunc' => 'content_6057510b6321b9_54824977',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4fdaa5ba4ee04771bdee20cb0137f2ea342c599f' => 
     array (
       0 => '/data/inquiry2.local/src/templates/login.tpl',
-      1 => 1615714626,
+      1 => 1616335090,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604dd9444d9793_69497160 (Smarty_Internal_Template $_smarty_tpl) {
-?>
-<!DOCTYPE html>
+function content_6057510b6321b9_54824977 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -52,12 +51,12 @@ function content_604dd9444d9793_69497160 (Smarty_Internal_Template $_smarty_tpl)
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in </p>
-<?php echo $_smarty_tpl->tpl_vars['login_error']->value;?>
+      <?php echo $_smarty_tpl->tpl_vars['login_error']->value;?>
 
       <form action="" method="post" class="needs-validation" novalidate>
        <label for="sign_in_name">sign in</label>
        <div class="input-group mb-3">
-          <input type="email" class="form-control" id="sign_in_name" placeholder="Email" name="e_mail" required>
+          <input type="email" class="form-control" id="sign_in_name" placeholder="Email" name="login_e_mail" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -160,7 +159,6 @@ function content_604dd9444d9793_69497160 (Smarty_Internal_Template $_smarty_tpl)
 
 </body>
 </html>
-
 
 
 

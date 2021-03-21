@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-13 00:40:24
+/* Smarty version 3.1.36, created on 2021-03-20 15:37:15
   from '/data/inquiry2.local/src/templates/complete.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_604c09f84a6141_47590034',
+  'unifunc' => 'content_6055981b7fa7e7_98514529',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9970b2ceeb1855b78a80e6a4ac93e7ad8f88c2e2' => 
     array (
       0 => '/data/inquiry2.local/src/templates/complete.tpl',
-      1 => 1615193470,
+      1 => 1616221738,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604c09f84a6141_47590034 (Smarty_Internal_Template $_smarty_tpl) {
-?>
-<!DOCTYPE html>
-<html lang="ja">
+function content_6055981b7fa7e7_98514529 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>コンタクトフォーム（完了）</title>
-<link href="../bootstrap.min.css" rel="stylesheet">
-<link href="../style.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./css/admin_lte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="./css/admin_lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./css/admin_lte/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <title>ログインフォーム</title>
+
+
 </head>
-<body>
-<div class="container">
+<body class="hold-transition login-page">
+
  
 <?php echo $_smarty_tpl->tpl_vars['name']->value;?>
 <br>
@@ -74,7 +86,45 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?><br>
  
   
    
-</div>
+
+<?php echo '<script'; ?>
+>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  <?php echo '</script'; ?>
+>
+  <!-- jQuery -->
+
+  <?php echo '<script'; ?>
+ src="./css/admin_lte/plugins/jquery/jquery.min.js"><?php echo '</script'; ?>
+>
+  <!-- Bootstrap 4 -->
+  <?php echo '<script'; ?>
+ src="./css/admin_lte/plugins/bootstrap/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
+>
+  <!-- AdminLTE App -->
+  <?php echo '<script'; ?>
+ src="./css/admin_lte/dist/js/adminlte.min.js"><?php echo '</script'; ?>
+>
+
+
+
 </body>
 </html><?php }
 }

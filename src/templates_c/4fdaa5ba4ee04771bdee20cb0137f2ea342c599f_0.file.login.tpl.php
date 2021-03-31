@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-21 13:58:35
+/* Smarty version 3.1.36, created on 2021-03-22 12:57:22
   from '/data/inquiry2.local/src/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_6057510b6321b9_54824977',
+  'unifunc' => 'content_60589432d4a076_38100225',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4fdaa5ba4ee04771bdee20cb0137f2ea342c599f' => 
     array (
       0 => '/data/inquiry2.local/src/templates/login.tpl',
-      1 => 1616335090,
+      1 => 1616417634,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6057510b6321b9_54824977 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60589432d4a076_38100225 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +70,7 @@ function content_6057510b6321b9_54824977 (Smarty_Internal_Template $_smarty_tpl)
 
         <label for="pass_word_n">password</label>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="pass_word_n" placeholder="password" name="password" required>
+          <input type="password" class="form-control" placeholder="password" name="login_password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

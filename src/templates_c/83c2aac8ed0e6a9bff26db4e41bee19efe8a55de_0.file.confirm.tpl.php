@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-20 14:50:33
+/* Smarty version 3.1.36, created on 2021-03-31 23:31:32
   from '/data/inquiry2.local/src/templates/confirm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_60558d29130cc0_33581631',
+  'unifunc' => 'content_606487c406c709_58037379',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '83c2aac8ed0e6a9bff26db4e41bee19efe8a55de' => 
     array (
       0 => '/data/inquiry2.local/src/templates/confirm.tpl',
-      1 => 1616219424,
+      1 => 1617201075,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60558d29130cc0_33581631 (Smarty_Internal_Template $_smarty_tpl) {
+function content_606487c406c709_58037379 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +43,9 @@ function content_60558d29130cc0_33581631 (Smarty_Internal_Template $_smarty_tpl)
   <title>ログインフォーム</title>
   <style>
   
+  .no-display{
+    display:none;
+  }
   .no-display{
     display:none;
   }
@@ -192,8 +195,8 @@ $_smarty_tpl->tpl_vars['course_v']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <select>
-                    <input type="hidden" name="comment" value="<?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
-">
+                    <textarea name="comment" class="no-display"><?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
+</textarea>
 
                     <input type="hidden"name="login_id" value="<?php echo $_smarty_tpl->tpl_vars['login_id']->value;?>
 ">

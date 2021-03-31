@@ -114,7 +114,7 @@
                   <div class="form-group">    
                       <label>お問い合わせ内容<span class="required">＊</span></label>
                        <span class="error">{$comment_error}</span>
-                         <textarea name="comment"class="form-control" rows="4">{$comment}</textarea>
+                         <textarea type="text" name="comment"class="form-control" rows="4">{$comment}</textarea>
                   </div>
 
                 </div>

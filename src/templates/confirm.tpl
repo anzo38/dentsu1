@@ -23,6 +23,9 @@
   .no-display{
     display:none;
   }
+  .no-display{
+    display:none;
+  }
   </style>
 
 </head>
@@ -99,7 +102,7 @@
                         <option type="hidden">{$course_v}</option>
                     {/foreach}
                     <select>
-                    <input type="hidden" name="comment" value="{$comment}">
+                    <textarea name="comment" class="no-display">{$comment}</textarea>
 
                     <input type="hidden"name="login_id" value="{$login_id}">
                     <input type="hidden"  name="pass" placeholder="Password"  value="{$pass}">

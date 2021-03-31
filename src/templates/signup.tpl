@@ -30,6 +30,7 @@
   .no-display{
     display:none;
   }
+  
   </style>
 
 </head>
@@ -67,8 +68,10 @@
           <input type="hidden" name="date" value="{$date}">
           <input type="hidden" name="time_start" value="{$time_start}">
           <input type="hidden" name="time_end" value="{$time_end}">
+          <input type="hidden" name="time_end" value="{$time_end}">
           
-          <input type="hidden" name="comment" value="{$comment}">
+          <input type="hidden" name="course" value="{$course}">
+          <textarea name="comment" class="no-display">{$comment}</textarea>
          
 
           <div class="form-group">
@@ -117,7 +120,7 @@
               <option type="hidden">{$course_v}</option>
               {/foreach}
               <select>
-              <input type="hidden" name="comment" value="{$comment}">
+              <textarea type="hidden" name="comment" class="no-display">{$comment}</textarea>
 
               <input type="hidden"name="login_id"  placeholder="E-mail" value="{$login_id}">
              <input type="submit" class="btn btn-primary" value="修正する">

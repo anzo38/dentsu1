@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-21 20:53:02
+/* Smarty version 3.1.36, created on 2021-03-31 23:10:22
   from '/data/inquiry2.local/src/templates/input.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_6057339e170c54_27536570',
+  'unifunc' => 'content_606482ce3116a7_03347949',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'afa8e42ef47b7797d9d70643c4e9bf18beed49b2' => 
     array (
       0 => '/data/inquiry2.local/src/templates/input.tpl',
-      1 => 1616327580,
+      1 => 1617199757,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6057339e170c54_27536570 (Smarty_Internal_Template $_smarty_tpl) {
+function content_606482ce3116a7_03347949 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -182,7 +182,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                       <label>お問い合わせ内容<span class="required">＊</span></label>
                        <span class="error"><?php echo $_smarty_tpl->tpl_vars['comment_error']->value;?>
 </span>
-                         <textarea name="comment"class="form-control" rows="4"><?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
+                         <textarea type="text" name="comment"class="form-control" rows="4"><?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
 </textarea>
                   </div>
 

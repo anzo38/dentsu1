@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2021-03-20 15:17:46
+/* Smarty version 3.1.36, created on 2021-03-31 23:31:54
   from '/data/inquiry2.local/src/templates/signup.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_6055938a8fbea9_61058895',
+  'unifunc' => 'content_606487dacbd6f9_81979556',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cd7b0937b1841d3827b55da89eab7b3492f25a4b' => 
     array (
       0 => '/data/inquiry2.local/src/templates/signup.tpl',
-      1 => 1616221061,
+      1 => 1617201112,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6055938a8fbea9_61058895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_606487dacbd6f9_81979556 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +53,7 @@ function content_6055938a8fbea9_61058895 (Smarty_Internal_Template $_smarty_tpl)
   .no-display{
     display:none;
   }
+  
   </style>
 
 </head>
@@ -126,9 +127,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 ">
           <input type="hidden" name="time_end" value="<?php echo $_smarty_tpl->tpl_vars['time_end']->value;?>
 ">
-          
-          <input type="hidden" name="comment" value="<?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
+          <input type="hidden" name="time_end" value="<?php echo $_smarty_tpl->tpl_vars['time_end']->value;?>
 ">
+          
+          <input type="hidden" name="course" value="<?php echo $_smarty_tpl->tpl_vars['course']->value;?>
+">
+          <textarea name="comment" class="no-display"><?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
+</textarea>
          
 
           <div class="form-group">
@@ -214,8 +219,8 @@ $_smarty_tpl->tpl_vars['course_v']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <select>
-              <input type="hidden" name="comment" value="<?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
-">
+              <textarea type="hidden" name="comment" class="no-display"><?php echo $_smarty_tpl->tpl_vars['comment']->value;?>
+</textarea>
 
               <input type="hidden"name="login_id"  placeholder="E-mail" value="<?php echo $_smarty_tpl->tpl_vars['login_id']->value;?>
 ">

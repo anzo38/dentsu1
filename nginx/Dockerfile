@@ -21,7 +21,7 @@ RUN yum install postfix -y
 # PHPプログラムをもってくる場所を設定
 RUN yum install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm -y
 # インストール
-RUN yum install --enablerepo=remi,remi-php74 php php-gd php-mbstring php-pdo ls /etc | grep php.ini libapache2-mod-php php-xml php-soap php-curl php-zip php-intl mod_ssl mysql zip unzip curl php-pecl-xdebug php-fpm php-pgsql -y
+RUN yum install --enablerepo=remi,remi-php74 php php-gd php-mbstring php-pdo php-mysql libapache2-mod-php php-xml php-soap php-curl php-zip php-intl mod_ssl mysql zip unzip curl php-pecl-xdebug php-fpm php-pgsql -y
 
 CMD ["/sbin/init"]
 ENTRYPOINT [ "/entrypoint.sh" ]

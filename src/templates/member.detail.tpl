@@ -11,26 +11,35 @@
 <body>
 
 {* {$result_id}<br> *}
-<p>名前：{$result_name}{$no_data}</p><br>
-<p>メールアドレス：{$result_e_mail}{$no_data}</p><br>
+<p>名前：{$data.name}{$no_data}</p><br>
+<p>メールアドレス：{$data.e_mail}{$no_data}</p><br>
 
 <p>カテゴリ：{$no_data}
-{foreach $result_question as $k => $v}
+{foreach $data.question as $k => $v}
  {if $v@last}
  {#$v#}  
  {else}
  {#$v#},
  {/if}
 {/foreach}</p><br>
-<p>カテゴリー：{#$result_category#}{$no_data}</p><br>
-<p>電話可能日：{$result_date}{$no_data}</p><br>
-<p>電話可能時間：{$result_time_start}-{$result_time_end}{$no_data}</p><br>
-<p>お問い合わせ内容：{$result_comment}{$no_data}</p><br>
-<p>ID：{$result_login_id}{$no_data}</p><br>
+<p>カテゴリー：{#$data.category#}{$no_data}</p><br>
+<p>電話可能日：{$data.date}{$no_data}</p><br>
+<p>電話可能時間：{$data.time_start}-{$data.time_end}{$no_data}</p><br>
+<p>お問い合わせ内容：{$data.comment}{$no_data}</p><br>
+<p>ID：{$data.login_id}{$no_data}</p><br>
 
+{* {#$data.question#} *}
+{* 
+<a href="./member.php">一覧へ戻る</a> *}
+    <form method="post" action="member.php">
 
-
-<a href="./member.php">一覧へ戻る</a>
+        <input  type="hidden" name="search_id"  value="{$id}">
+        <input  type="hidden" name="search_name"  value="{$name}">
+        <input  type="hidden" name="search_e_mail"  value="{$e_mail}">
+        <input  type="hidden" name="search_login_id"  value="{$login_id}">
+        <input  type="hidden" name="search_date"  value="{$date}">
+        <input  type="submit" name="back"  value="一覧へ">
+    </form>
 
 <a href="./logout.php">ログアウト</a>
 

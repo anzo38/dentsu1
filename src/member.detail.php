@@ -1,7 +1,7 @@
 <?php
 require_once('admin.php');
 // require('./utility.php');
-require('./database.php');
+// require('./database.php');
 
 /**
  * TODOコメントを書きましょう。
@@ -27,7 +27,7 @@ class Member_detail extends Admin {
         $this->results_from_db();
         // 継続的認証
         // $this->is_auth();
-      
+        ini_set('display_errors', "On");
         $this->smarty->assign('id', $this->search_id);
         $this->smarty->assign('name', $this->search_name);
         $this->smarty->assign('e_mail', $this->search_e_mail);
@@ -43,7 +43,7 @@ class Member_detail extends Admin {
     //TODO:プレースホルダを利用すること。DBは親クラスのものを利用。
         $query="SELECT * FROM contact as c JOIN questions as q ON c.id = q.contact_id WHERE c.id=" . $this->result_id;
         // print_r($query);exit;
-        $result = DbMabager::getInstance()->exec($query);
+        $result = $this->dbh->prepare($query);
         // $csv_data="氏名, 趣味, 好きな食べ物, お住まいの地域, パスワード\r\n";
         if(empty($result)){
             $this->smarty->assign('no_data',"情報がありません");
